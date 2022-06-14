@@ -21,6 +21,7 @@ const connections = new Map();
 // Add Node
 function addNode(airport) {
     // 1 airport in, set airport as key with value of empty array
+    // Add a NODE object
     connections.set(airport, []);
 }
 
@@ -40,7 +41,7 @@ routes.forEach(route => addEdge(route[0], route[1]));
 console.log(connections);
 
 
-function bfs(start, goal) {
+function bfs(start, target) {
 
     // FIFO To-Be-Checked array
     const queue = [start]
@@ -59,10 +60,10 @@ function bfs(start, goal) {
         // iterate through the array of destinations, the values of the airport in the Map object
         for (const destination of destinations) {
 
-            // Check if we fonud the 
-        if (destination === goal) {
-                console.log ("I found BKK");
-            }
+            // Check if we fonud the target
+            if (destination === target) {
+                    console.log (`I found the target: ${target}`);
+                }
             
             // If we haven't seen this airport before
             if ( !seen.has(destination))  {
