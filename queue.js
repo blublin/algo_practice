@@ -91,3 +91,33 @@ console.log("\n\n|--- Read Again ---|")
 aQueue.read();
 
 
+const whatIf = queue => {
+    // Check if queue exists and front/back are equal
+    if (!queue.front || queue.front.value !== queue.back.value ) {
+        return false;
+    }
+    
+    // Instantiate string and tempQ
+    let palindrome = ""
+    const tempQ = new Queue();
+
+    // Read through queue
+    while (queue.front) {
+        let node = queue.dequeue();
+        // Build palindrome string
+        palindrome += node.value;
+        tempQ.enqueue(node);
+    }
+
+    // Reset queue
+    queue.front = tempQ.front;
+    queue.back = tempQ.back;
+
+    for (let i = 0; i < Math.floor(palindrome.length/2); i++) {
+        // Compare front to back characters of string (middle value is inherently true)
+        if (palindrome[i] !== palindrome[palindrome.length - 1 - i]) {
+            return false;
+        }
+    }
+    return true
+}
