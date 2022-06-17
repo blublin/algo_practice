@@ -61,7 +61,7 @@ class Stack {
         }
         while (middleStack.top) {
             let node = middleStack.pop()
-            this.push( new Node(node.value) )
+            this.push( node )
             copyStack.push( new Node(node.value) )
         }
         return copyStack
